@@ -1,4 +1,5 @@
 import os
+from zoneinfo import ZoneInfo
 from datetime import date
 
 import dotenv
@@ -19,8 +20,9 @@ def main():
 
 def tj() -> int:
     # TODO: automate getting date from calendar
-    today = date.today()
-    return (date(today.year, 11, 16) - today).days
+    tz = ZoneInfo("Europe/Helsinki")
+    today = date.today(tzinfo=tz) + timedelta
+    return (date(today.year, 11, 16, zoneinfo=tz) - today).days
 
 if __name__ == "__main__":
     main()
